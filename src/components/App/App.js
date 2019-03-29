@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import GalleryList from '../GalleryList/GalleryList';
 import './App.css';
 
 class App extends Component {
+  state = {
+    galleryList: []
+  }
+
   getGalleryItems = () => {
     axios({
       method: 'GET',
       url: '/gallery'
-    }).then(response => {
+    }).then((response) => {
+      console.log(`response`, response.data);
       this.setState({
-        galleryItems: response.data
-      }).catch(error => {
+        galleryList: response.data
+      })
+      }).catch((error) => {
         console.log(`error getting all gallery items`, error);
       })
-    })
   }
+
+componentDidMount () {
+  console.log(`in componentDidMount...`);
+  this.getGalleryItems();
+}
 
   render() {
     return (
@@ -23,8 +34,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg" alt="small goat"/>
+          <GalleryList list={this.state.galleryList}/>
       </div>
     );
   }
