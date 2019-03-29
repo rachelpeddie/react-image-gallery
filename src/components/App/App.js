@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
+  getGalleryItems = () => {
+    axios({
+      method: 'GET',
+      url: '/gallery'
+    }).then(response => {
+      this.setState({
+        galleryItems: response.data
+      }).catch(error => {
+        console.log(`error getting all gallery items`, error);
+      })
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,7 +24,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
+        <img src="images/goat_small.jpg" alt="small goat"/>
       </div>
     );
   }
