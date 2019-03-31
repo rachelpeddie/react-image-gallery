@@ -6,11 +6,10 @@ const pool = require('../modules/pool.js');
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    console.log(req.params);
+    console.log(`req.params is`, req.params);
     const galleryId = req.params.id;
-    const galleryLikes = req.params.likes;
-    let sqlText = `UPDATE galleryItems SET "likes"=$1 WHERE "id"=$2;`
-    pool.query(sqlText, [galleryLikes, galleryId])
+    let sqlText = `UPDATE galleryItems SET "likes"=likes+1 WHERE "id"=$1;`
+    pool.query(sqlText, [galleryId])
     .then (result => {
         res.sendStatus(200);
     }).catch( error => {
@@ -20,7 +19,7 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    let sqlText = 'SELECT * FROM galleryItems;'
+    let sqlText = 'SELECT * FROM galleryItems ORDER BY "id";'
     pool.query(sqlText)
     .then(result => {
         res.send(result.rows)
