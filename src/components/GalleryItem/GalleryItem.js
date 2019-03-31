@@ -34,6 +34,15 @@ class GalleryItem extends Component {
         })
     }
 
+    // countLikes = () => {
+    //     for (const galleryItem of galleryList) {
+    //         if (galleryItem.id == galleryId) {
+    //             galleryItem.likes += 1;
+    //         }
+    //         return galleryItem.likes;
+    //     }
+    // }
+
 
     render(){
         return(
