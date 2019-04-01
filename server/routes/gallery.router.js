@@ -29,4 +29,20 @@ router.get('/', (req, res) => {
     // res.send(galleryItems);
 }); // END GET Route
 
+// POST Route
+router.post('/', (req, res) => {
+    const newGalleryItem = req.body;
+    const newPath = req.body.newPath;
+    const newDescription = req.body.newDescription;
+    const sqlText = `INSERT INTO galleryItems (path, description, likes) VALUES ($1, $2, $3)`;
+    pool.query(sqlText, [newPath, newDescription, 0])
+    .then( response => {
+        console.log(`successfully added new ${newGalleryItem} to gallery`);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log(`Error making database query ${sqlText}`, error);
+        res.sendStatus(500);
+    })
+});
+
 module.exports = router;

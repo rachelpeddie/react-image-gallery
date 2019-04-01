@@ -16,13 +16,17 @@ class GalleryForm extends Component {
             }
         })
     }
-    
+
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addStudent(this.state);
-        this.clearStudentFields();
-    }
-
+        this.props.addGalleryItem(this.state);
+        this.setState({
+            newCreature: {
+                name: '',
+                from: ''
+            }
+    })
+}
     render(){
         return(
             <form onSubmit={this.props.addGalleryItem}>
