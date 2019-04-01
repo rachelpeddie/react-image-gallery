@@ -13,13 +13,28 @@ class App extends Component {
       method: 'GET',
       url: '/gallery'
     }).then( response => {
-      console.log(`response`, response.data);
+      console.log(`GET response`, response.data);
       this.setState({
         galleryList: response.data
       })
       }).catch( error => {
         console.log(`error getting all gallery items`, error);
+        alert(`error loading gallery items`);
       })
+  }
+
+  addGalleryItem = (newGalleryItem) => {
+    axios({
+      method: 'POST',
+      url: '/gallery',
+      data: newGalleryItem
+    }).then ( response => {
+      console.log(`POST response`);
+      this.getGalleryItems();
+    }).catch ( error => {
+      console.log(`error adding new gallery item`, error);
+      alert(`error adding new gallery item`);
+    })
   }
 
   updateLikes = (id) => {
@@ -46,6 +61,7 @@ componentDidMount () {
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
+        <GalleryForm addGalleryItem={this.addGalleryItem}/>
         <br/>
           <GalleryList  list={this.state.galleryList}
                         updateLikes={this.updateLikes}
