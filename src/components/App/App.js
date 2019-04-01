@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
+import GalleryForm from '../GalleryForm/GalleryForm';
 import './App.css';
 
 class App extends Component {
   state = {
     galleryList: []
-  }
+    }
 
   getGalleryItems = () => {
     axios({
@@ -61,7 +62,7 @@ componentDidMount () {
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
-        <GalleryForm addGalleryItem={this.addGalleryItem}/>
+        <GalleryForm  addGalleryItem={this.addGalleryItem}/>
         <br/>
           <GalleryList  list={this.state.galleryList}
                         updateLikes={this.updateLikes}
