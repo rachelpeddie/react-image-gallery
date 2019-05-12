@@ -35,9 +35,9 @@ class GalleryForm extends Component {
         return(
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="path-input">Image URL:</label>
-                <input id="path-input" onChange={this.handleChangeFor('newPath')} />
+                <input id="path-input" className='input-field' onChange={this.handleChangeFor('newPath')} value={this.state.newGalleryItem.newPath}/>
                 <label htmlFor="newDescription-input">Image Description:</label>
-                <input id="newDescription-input" onChange={this.handleChangeFor('newDescription')} />
+                <input id="newDescription-input" className='input-field' onChange={this.handleChangeFor('newDescription')} value={this.state.newGalleryItem.newDescription}/>
                 <button type="submit">Done</button>
             </form>
         )

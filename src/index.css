@@ -1,5 +1,29 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.input-field {
+  margin: auto 15px;
+}
+
+button {
+  width: 100px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: lightcoral;
+}
+
+.container {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 18px;
+
+}
+
+.grid-child {
+  align-self: center;
 }

@@ -60,13 +60,15 @@ componentDidMount () {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
+          <h1 className="App-title">My favorite things!</h1>
         </header>
         <GalleryForm  addGalleryItem={this.addGalleryItem}/>
         <br/>
+        <section className="image-gallery">
           <GalleryList  list={this.state.galleryList}
                         updateLikes={this.updateLikes}
           />
+        </section>
       </div>
     );
   }
