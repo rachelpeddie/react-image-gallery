@@ -10,7 +10,7 @@ class GalleryItem extends Component {
         if(this.state.image === true){
             console.log(`in image true...`);
                 return (
-                    <section>
+                    <section className='image-block'>
                         <div key={this.props.item.id}>
                         <br />
                             <img onClick={ () => { this.handleSubmit() } } src={this.props.item.path}
@@ -46,7 +46,7 @@ class GalleryItem extends Component {
 
     render(){
         return(
-            <section>
+            <section className='image-block'>
                 <div key={this.props.item.id}>
                     {this.flip()}
                     <br />

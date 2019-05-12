@@ -27,3 +27,8 @@ button {
 .grid-child {
   align-self: center;
 }
+
+.image-block{
+  max-width: 240px;
+  word-wrap: break-word;
+}
